@@ -19,6 +19,7 @@ module.exports = {
   setupFiles: ['./test/jestSetup.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest',
+    '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/test/fileTransformer.js',
   },

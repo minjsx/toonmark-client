@@ -6,9 +6,13 @@ import styled from 'styled-components';
 interface Props {
   id?: string;
   style?: CSSProperties;
+  /** 버튼 좌측에 삽입할 이미지의 URL */
   imgSrc?: string;
+  /** 보여주고 싶은 이름 */
   text?: string;
+  /** 버튼을 누를 때 호출할 함수 */
   onClick?: () => void;
+  /** 이 값을 `true` 로 설정하면 loading ActivityIndicator가 적용됩니다 */
   isLoading?: boolean;
 }
 
