@@ -23,7 +23,7 @@ const ButtonWrapper = styled.div`
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 `;
 
@@ -38,7 +38,6 @@ const PrimaryLightText = styled.span`
 `;
 
 const LogoImg = styled.img`
-  position: absolute;
   left: 20px;
   height: 20px;
   width: 20px;
