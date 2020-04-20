@@ -1,3 +1,4 @@
+import { ButtonPrimary, ButtonPrimaryLight } from '../ui/Buttons';
 import React, { CSSProperties, ReactElement } from 'react';
 
 import { ButtonPrimary } from '../ui/Buttons';
@@ -14,12 +15,13 @@ interface Props {
   onClick?: () => void;
   /** 이 값을 `true` 로 설정하면 loading ActivityIndicator가 적용됩니다 */
   isLoading?: boolean;
+  /** 이 값에 따라 버튼의 Theme를 결정합니다. */
+  theme?: 'Primary' | 'PrimaryLight';
 }
 
 const ButtonWrapper = styled.div`
   flex: 1;
   height: 100%;
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -59,8 +61,8 @@ const Spinner = styled.div`
 `;
 
 function Button(props: Props): ReactElement {
-  const { onClick, imgSrc, text, style, isLoading } = props;
-  return (
+  const { onClick, imgSrc, text, style, isLoading, theme } = props;
+  return theme === 'Primary' ? (
     <ButtonPrimary style={style} onClick={onClick}>
       {isLoading ? (
         <Spinner id="spinner" />
@@ -71,11 +73,22 @@ function Button(props: Props): ReactElement {
         </ButtonWrapper>
       )}
     </ButtonPrimary>
+  ) : (
+    <ButtonPrimaryLight style={style} onClick={onClick}>
+      {isLoading ? (
+        <Spinner id="spinner" />
+      ) : (
+        <ButtonWrapper>
+          {imgSrc ? <LogoImg src={imgSrc} /> : null}
+          <PrimaryLightText>{text}</PrimaryLightText>
+        </ButtonWrapper>
+      )}
+    </ButtonPrimaryLight>
   );
 }
 
 Button.defaultProps = {
-  style: { display: 'flex', height: '60px' },
+  theme: 'Primary',
 };
 
 export default Button;
