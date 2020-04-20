@@ -1,7 +1,8 @@
-import { boolean, text, withKnobs } from '@storybook/addon-knobs';
+import { boolean, radios, text, withKnobs } from '@storybook/addon-knobs';
 import Button from './Button';
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import styled from 'styled-components';
 
 export default {
   title: 'components|shared/Button',
@@ -12,22 +13,55 @@ export default {
   },
 };
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const standard = (): React.ReactElement => {
   const onClick = action('onClickAction');
+  const theme = radios(
+    'theme',
+    { Primary: 'Primary', PrimaryLight: 'PrimaryLight' },
+    'Primary',
+  );
+  const buttonText = text('text', '월요일');
   const isLoading = boolean('loading', false);
-  const buttonText = text('text', 'Storybook');
-  return <Button text={buttonText} isLoading={isLoading} onClick={onClick} />;
+
+  return (
+    <Button
+      text={buttonText}
+      isLoading={isLoading}
+      onClick={onClick}
+      theme={theme}
+    />
+  );
 };
 
 standard.story = {
   name: 'Standard',
 };
 
-export const loading = (): React.ReactElement => <Button isLoading />;
+export const loading = (): React.ReactElement => (
+  <Wrapper>
+    <Button style={{ marginRight: 10 }} isLoading theme={'Primary'} />
+    <Button isLoading theme={'PrimaryLight'} />
+  </Wrapper>
+);
 
-export const withLeftIcon = (): React.ReactElement => (
-  <Button
-    imgSrc="https://img.favpng.com/15/7/19/start-menu-button-windows-key-png-favpng-P045drMQczE17EaAWHQ1BT7d0.jpg"
-    text="withLeftIcon"
-  />
+export const withIcon = (): React.ReactElement => (
+  <Wrapper>
+    <Button
+      style={{ marginRight: 10 }}
+      imgSrc="https://cdn4.iconfinder.com/data/icons/contact-us-19/48/35-512.png"
+      text="완료"
+      theme={'Primary'}
+    />
+    <Button
+      style={{ marginRight: 10 }}
+      imgSrc="https://cdn4.iconfinder.com/data/icons/contact-us-19/48/35-512.png"
+      text="완료"
+      theme={'PrimaryLight'}
+    />
+  </Wrapper>
 );
