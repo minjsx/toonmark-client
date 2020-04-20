@@ -12,44 +12,51 @@ const size = {
 };
 
 const colors = {
-  orange: '#F2994A',
-  skyBlue: '#069ccd',
-  whiteGray: '#f7f6f3',
-  dusk: 'rgb(65,77,107)',
-  green: 'rgb(29,211,168)',
-  greenBlue: 'rgb(36,205,151)',
-  mediumGray: 'rgb(134,154,183)',
-  paleGray: 'rgb(221,226,236)',
-  lightBackground: 'white',
-  lightBackgroundLight: '#f7f6f3',
-  darkBackground: '#323739',
-  darkBackgroundLight: '#393241',
+  black: '#000000',
+  white: '#ffffff',
+  blue1: '#01a1fe',
+  blue3: '#80d0fe',
+  blue2: '#4dbdfe',
+  gray1: '#333333',
+  gray2: '#454545',
+  gray3: '#828282',
+  gray4: '#bdbdbd',
+  gray5: '#e0e0e0',
+  green1: '#219653',
+  gray6: '#f2f2f2',
+  green2: '#27ae60',
+  green3: '#6fcf97',
+  pink1: '#ff00ff',
+  pink2: '#ff33ff',
+  pink3: '#ff66ff',
+  orange1: '#f2994a',
+  orange2: '#f5ae70',
+  orange3: '#f8c9a0',
+  red1: '#ff0000',
+  red2: '#ff4545',
+  red3: '#ff8888',
+  lightBackground: '#ffffff',
+  darkBackground: '#333333',
 };
 
 const light = {
-  background: `linear-gradient(
-    to bottom right,
-    ${colors.lightBackground},
-    ${colors.lightBackgroundLight})`,
-  btnPrimary: colors.orange,
-  btnPrimaryFont: 'white',
+  background: colors.lightBackground,
+  btnPrimary: colors.orange1,
+  btnPrimaryFont: colors.white,
   btnPrimaryLight: colors.lightBackground,
-  btnPrimaryLightFont: 'black',  
-  fontColor: 'black',
+  btnPrimaryLightFont: colors.gray1,
+  fontColor: colors.gray1,
 };
 
 export type Theme = typeof light;
 
 const dark: Theme = {
-  background: `linear-gradient(
-      to bottom right,
-      ${colors.darkBackground},
-      ${colors.darkBackgroundLight})`,
-  btnPrimary: colors.orange,
-  btnPrimaryFont: 'white',
-  btnPrimaryLight: colors.whiteGray,
-  btnPrimaryLightFont: 'black',
-  fontColor: 'white',
+  background: colors.darkBackground,
+  btnPrimary: colors.orange1,
+  btnPrimaryFont: colors.white,
+  btnPrimaryLight: colors.lightBackground,
+  btnPrimaryLightFont: colors.gray1,
+  fontColor: colors.white,
 };
 
 const theme = {
