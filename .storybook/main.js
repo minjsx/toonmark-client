@@ -1,10 +1,12 @@
 module.exports = {
-  stories: ['../src/**/*.stories.(js|mdx|tsx)'],
+  stories: ['../src/**/*.stories.(js|ts|mdx|tsx)'],
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
     '@storybook/addon-knobs',
+    '@storybook/addon-knobs/register',
     '@storybook/addon-docs',
+    'themeprovider-storybook/register',
   ],
   webpackFinal: async (config) => {
     // do mutation to the config
