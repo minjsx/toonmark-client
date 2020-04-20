@@ -1,7 +1,6 @@
 import { ButtonPrimary, ButtonPrimaryLight } from '../ui/Buttons';
 import React, { CSSProperties, ReactElement } from 'react';
-
-import { ButtonPrimary } from '../ui/Buttons';
+import { Typhography } from '../../Typhography';
 import styled from 'styled-components';
 
 interface Props {
@@ -29,9 +28,12 @@ const ButtonWrapper = styled.div`
 `;
 
 const PrimaryText = styled.span`
-  font-size: 16px;
-  font-weight: 500;
-  color: ${({ theme }): string => theme.btnPrimaryFont};
+  ${Typhography.ButtonPrimary}
+  margin: auto;
+`;
+
+const PrimaryLightText = styled.span`
+  ${Typhography.ButtonPrimaryLight}
   margin: auto;
 `;
 
