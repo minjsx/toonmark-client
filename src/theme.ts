@@ -41,6 +41,7 @@ const colors = {
 
 const light = {
   background: colors.lightBackground,
+  secondaryBackground: colors.white,
   btnPrimary: colors.orange1,
   btnPrimaryFont: colors.white,
   btnPrimaryLight: colors.lightBackground,
@@ -52,6 +53,7 @@ export type Theme = typeof light;
 
 const dark: Theme = {
   background: colors.darkBackground,
+  secondaryBackground: colors.gray2,
   btnPrimary: colors.orange1,
   btnPrimaryFont: colors.white,
   btnPrimaryLight: colors.lightBackground,
