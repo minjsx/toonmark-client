@@ -11,7 +11,7 @@ const size = {
   desktop: '2560px',
 };
 
-const colors = {
+export const colors = {
   black: '#000000',
   white: '#ffffff',
   blue1: '#01a1fe',
