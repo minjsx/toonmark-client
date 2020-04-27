@@ -9,7 +9,7 @@ export default {
   component: Card,
   decorators: [withKnobs],
   parameters: {
-    componentSubtitle: '웹툰 플랫폼의 기본, "카드" 컴포넌트',
+    componentSubtitle: '정보를 효율적이게 전달해주는 "카드" 컴포넌트',
   },
 };
 

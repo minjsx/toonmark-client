@@ -1,19 +1,25 @@
 import * as icons from './svg';
 import React, { ReactElement } from 'react';
+import { colors } from '../theme';
 
 type IconType = keyof typeof icons;
 
 // 스토리에서 불러오기 위함
 export const iconTypes: IconType[] = Object.keys(icons) as any[]; // eslint-disable-line
 
-export type IconProps = {
+export interface IIconProps {
   /** 사용 할 아이콘 타입 */
   icon: IconType;
   /** 아이콘 색상 */
   color?: string;
   /** 아이콘 크기 */
   size?: string | number;
-  className?: string;
+}
+
+const defaultProps: Partial<IIconProps> = {
+  icon: 'FavorFill',
+  size: 24,
+  color: colors.gray4,
 };
 
 /** 아이콘을 보여주고 싶을 땐 `Icon` 컴포넌트를 사용하세요.
@@ -22,14 +28,11 @@ export type IconProps = {
  *
  * 스타일로 모양새를 설정 할 때에는 `color`로 색상을 설정하고 `size`로 크기를 설정하세요.
  */
-const Icon = ({ icon, color, size, className }: IconProps): ReactElement => {
+const Icon = ({ icon, color, size }: IIconProps): ReactElement => {
   const SVGIcon = icons[icon];
-  return (
-    <SVGIcon
-      css={{ fill: color || 'currentColor', width: size, height: 'auto' }}
-      className={className}
-    />
-  );
+  return <SVGIcon fill={color} width={size} height={size} />;
 };
+
+Icon.defaultProps = defaultProps;
 
 export default Icon;

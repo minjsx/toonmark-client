@@ -1,12 +1,5 @@
-export { ReactComponent as favorFill } from './favor_fill.svg';
-export { ReactComponent as favorOutline } from './favor_outline.svg';
-export { ReactComponent as home } from './home.svg';
-export { ReactComponent as search } from './search.svg';
-export { ReactComponent as setting } from './setting.svg';
-export { ReactComponent as toomics } from './toomics.svg';
-export { ReactComponent as daum } from './daum.svg';
-export { ReactComponent as kakao } from './kakao.svg';
-export { ReactComponent as lezhin } from './lezhin.svg';
-export { ReactComponent as misterblue } from './misterblue.svg';
-export { ReactComponent as naver } from './naver.svg';
-export { ReactComponent as toptoon } from './toptoon.svg';
+export { default as FavorFill } from './FavorFill';
+export { default as FavorOutline } from './FavorOutline';
+export { default as Home } from './Home';
+export { default as Search } from './Search';
+export { default as Setting } from './Setting';

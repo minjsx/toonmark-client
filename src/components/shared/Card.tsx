@@ -1,8 +1,9 @@
-import { ButtonPrimary, ButtonPrimaryLight } from '../ui/Buttons';
 import React, { CSSProperties, ReactElement } from 'react';
 import Icon from '../../Icon/Icon';
 import { Platform } from '../../types';
+import PlatformIcon from '../../Icon/PlatformIcon';
 import { Typhography } from '../../Typhography';
+import { colors } from '../../theme';
 import styled from 'styled-components';
 
 type WebtoonPlatform = keyof typeof Platform;
@@ -33,13 +34,13 @@ const CardContainer = styled('button')`
   background: ${(props): string => props.theme.secondaryBackground};
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   &:focus {
-    opacity: 0.5;
+    opacity: 0.75;
   }
   &:hover {
-    opacity: 0.5;
+    opacity: 0.75;
   }
   &:active {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 `;
 
@@ -71,9 +72,8 @@ const CardFooter = styled('div')`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  align-self: stretch;
 `;
-
-const PlatformIcon = styled('img')``;
 
 function Card(props: Props): ReactElement {
   const { style, thumbnail, title, platform, favor, link, onClick } = props;
@@ -83,12 +83,12 @@ function Card(props: Props): ReactElement {
       <TextWrapper>
         <CardTitle>{title}</CardTitle>
         <CardFooter>
-          <div css={{ display: 'flex', flex: 1 }}>
-            <Icon icon="naver" />
-          </div>
-          <div css={{ display: 'flex', flex: 1 }}>
-            <Icon icon="favorFill" />
-          </div>
+          <PlatformIcon icon="naver" size="24px" />
+          <Icon
+            icon="FavorFill"
+            size="1rem"
+            color={favor ? colors.red1 : colors.gray4}
+          />
         </CardFooter>
       </TextWrapper>
     </CardContainer>
