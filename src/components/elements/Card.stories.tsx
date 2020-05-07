@@ -14,8 +14,8 @@ export default {
 };
 
 const Wrapper = styled.div`
-  height: 324px;
-  width: 214px;
+  height: 20.25rem;
+  width: 13.375rem;
 `;
 
 export const standard = (): React.ReactElement => {
@@ -28,9 +28,13 @@ export const standard = (): React.ReactElement => {
   const CardText = text('text', '월요일');
   const isLoading = boolean('loading', false);
 
-  return <Wrapper><Card /></Wrapper>;
+  return (
+    <Wrapper>
+      <Card />
+    </Wrapper>
+  );
 };
 
 standard.story = {
-  name: 'Standard',
+  name: 'Default',
 };
