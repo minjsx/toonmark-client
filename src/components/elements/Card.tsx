@@ -28,8 +28,8 @@ const CardContainer = styled('button')`
   border: none;
   box-sizing: border-box;
   padding: 0;
-  height: 324px;
-  width: 214px;
+  height: 100%;
+  width: 100%;
   border-radius: 1.25rem;
   background: ${(props): string => props.theme.secondaryBackground};
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

@@ -1,4 +1,4 @@
-import { ButtonPrimary, ButtonPrimaryLight } from '../ui/Buttons';
+import { ButtonPrimary, ButtonPrimaryLight } from '../atoms/Buttons';
 import React, { CSSProperties, ReactElement } from 'react';
 import { Typhography } from '../../Typhography';
 import styled from 'styled-components';
