@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import Button from '../shared/Button';
+import Button from '../elements/Button';
 import { IC_GOOGLE_W } from '../../utils/Icons';
 import { User } from '../../types';
 import { device } from '../../theme';
