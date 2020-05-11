@@ -39,6 +39,9 @@ type ImageProps = {
 };
 
 const Image = styled('img')<ImageProps>`
+  &:hover {
+    cursor: pointer;
+  }
   width: ${(props): string => props.size || '1rem'};
   height: ${(props): string => props.size || '1rem'};
 `;

@@ -32,7 +32,15 @@ const defaultProps: Partial<IIconProps> = {
  */
 const Icon = ({ onClick, icon, color, size }: IIconProps): ReactElement => {
   const SVGIcon = icons[icon];
-  return <SVGIcon onClick={onClick} fill={color} width={size} height={size} />;
+  return (
+    <SVGIcon
+      style={{ cursor: 'pointer' }}
+      onClick={onClick}
+      fill={color}
+      width={size}
+      height={size}
+    />
+  );
 };
 
 Icon.defaultProps = defaultProps;
