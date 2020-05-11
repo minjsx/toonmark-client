@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions';
 import styled from 'styled-components';
 
 export default {
-  title: 'components|shared/Button',
+  title: 'components|Button',
   component: Button,
   decorators: [withKnobs],
   parameters: {
