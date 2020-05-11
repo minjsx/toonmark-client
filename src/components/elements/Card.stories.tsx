@@ -26,7 +26,7 @@ const Layout = styled.div`
 `;
 
 export const standard = (): React.ReactElement => {
-  const onCardImageClick = action('CardImageClick');
+  const onCardClick = action('CardClick');
   const onHeartIconClick = action('HeartClick');
   const title = text('Title', '오늘부터 0촌! - 진돌히디의 우당탕 결혼일기');
   const favor = boolean('Favor', false);
@@ -34,7 +34,7 @@ export const standard = (): React.ReactElement => {
     <Wrapper>
       <Card
         title={title}
-        onCardImageClick={onCardImageClick}
+        onCardClick={onCardClick}
         onHeartClick={onHeartIconClick}
         favor={favor}
       />
