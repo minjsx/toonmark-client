@@ -8,6 +8,8 @@ type IconType = keyof typeof icons;
 export const iconTypes: IconType[] = Object.keys(icons) as any[]; // eslint-disable-line
 
 export interface IIconProps {
+  /** 아이콘과 인터렉션시 동작할 함수 */
+  onClick?: (e?: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
   /** 사용 할 아이콘 타입 */
   icon: IconType;
   /** 아이콘 색상 */
@@ -28,9 +30,9 @@ const defaultProps: Partial<IIconProps> = {
  *
  * 스타일로 모양새를 설정 할 때에는 `color`로 색상을 설정하고 `size`로 크기를 설정하세요.
  */
-const Icon = ({ icon, color, size }: IIconProps): ReactElement => {
+const Icon = ({ onClick, icon, color, size }: IIconProps): ReactElement => {
   const SVGIcon = icons[icon];
-  return <SVGIcon fill={color} width={size} height={size} />;
+  return <SVGIcon onClick={onClick} fill={color} width={size} height={size} />;
 };
 
 Icon.defaultProps = defaultProps;
