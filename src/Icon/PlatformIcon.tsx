@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 // 스토리에서 불러오기 위함
 const icons = {
-  naver:
+  NAVER:
     'https://pbs.twimg.com/profile_images/1162296345173975042/DHZimJgv_400x400.jpg',
-  daum: 'https://u1.daumcdn.net/webtoon/op/webtoon_home_text_ver_20190514.png',
-  kakao:
+  DAUM: 'https://u1.daumcdn.net/webtoon/op/webtoon_home_text_ver_20190514.png',
+  KAKAO:
     'https://dn-img-page.kakao.com/download/resource?kid=b6iau6/hydtsoiYqF/0gzoOvKflPuGyFDWXNDZJ1',
-  lezhin:
+  LEZHIN:
     'https://socialdotlezhindotcom.files.wordpress.com/2017/02/cropped-cropped-blog1.png?w=200',
-  toomics:
+  TOOMICS:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5KP0Yiis1Q2uImHTndaVsZ1O8GTZLMXT2HvYvCLHcTC_MwrOK&usqp=CAU',
-  toptoon:
+  TOPTOON:
     'https://image.winudf.com/v2/image1/bmV0LnRvcHRvb24uYW5kcm9pZC5hcHBzX2ljb25fMTU1Mzc4MDk5N18wMTc/icon.png?w=&fakeurl=1',
-  misterblue:
+  MISTERBLUE:
     'https://pbs.twimg.com/profile_images/958625612129685506/7uVmsqEG_400x400.jpg',
 };
 
@@ -30,7 +30,7 @@ export type PlatformIconProps = {
 };
 
 const defaultProps: Partial<PlatformIconProps> = {
-  icon: 'naver',
+  icon: 'NAVER',
   size: '24px',
 };
 

@@ -23,14 +23,16 @@ const IconListWrapper = styled.ul`
   }
 `;
 
-export const platformIcon = (): ReactElement => <PlatformIcon icon="naver" />;
+export const platformIcon = (): ReactElement => {
+  return <PlatformIcon icon="NAVER" />;
+};
 
 platformIcon.story = {
   name: 'Default',
 };
 
 export const customSize = (): ReactElement => (
-  <PlatformIcon icon="naver" size="2rem" />
+  <PlatformIcon icon="NAVER" size="2rem" />
 );
 
 export const listOfPlatformIcons = (): ReactElement => {
