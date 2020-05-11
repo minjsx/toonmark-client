@@ -16,7 +16,8 @@ interface Props {
   platform?: WebtoonPlatform;
   favor?: boolean;
   link?: string;
-  onClick?: () => void;
+  onCardClick?: (event?: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onHeartClick?: (event?: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 }
 
 const CardContainer = styled('button')`
@@ -30,32 +31,37 @@ const CardContainer = styled('button')`
   padding: 0;
   height: 100%;
   width: 100%;
+  max-height: 20.25rem;
+  max-width: 13.375rem;
   border-radius: 1.25rem;
   background: ${(props): string => props.theme.secondaryBackground};
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+`;
+
+const CardImage = styled('img')`
+  display: flex;
+  flex: 1;
+  max-height: 11.25rem;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem 1.25rem 0 0;
   &:focus {
     opacity: 0.75;
   }
   &:hover {
     opacity: 0.75;
+    cursor: pointer;
   }
   &:active {
     opacity: 0.75;
   }
 `;
 
-const CardImage = styled('img')`
-  display: flex;
-  height: 180px;
-  width: 214px;
-  object-fit: cover;
-  border-radius: 1.25rem 1.25rem 0 0;
-`;
-
 const TextWrapper = styled('div')`
   display: flex;
   flex: 1;
   flex-direction: column;
+  align-self: stretch;
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 0.75rem;
@@ -65,6 +71,9 @@ const CardTitle = styled('p')`
   ${Typhography.Body2Regular}
   text-align: left;
   margin: 0;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const CardFooter = styled('div')`
@@ -76,15 +85,25 @@ const CardFooter = styled('div')`
 `;
 
 function Card(props: Props): ReactElement {
-  const { style, thumbnail, title, platform, favor, link, onClick } = props;
+  const {
+    style,
+    thumbnail,
+    title,
+    platform,
+    favor,
+    link,
+    onCardClick,
+    onHeartClick,
+  } = props;
   return (
     <CardContainer>
-      <CardImage src={thumbnail} />
+      <CardImage onClick={onCardClick} src={thumbnail} />
       <TextWrapper>
-        <CardTitle>{title}</CardTitle>
+        <CardTitle onClick={onCardClick}>{title}</CardTitle>
         <CardFooter>
-          <PlatformIcon icon="naver" size="24px" />
+          <PlatformIcon icon="NAVER" size="24px" />
           <Icon
+            onClick={onHeartClick}
             icon="FavorFill"
             size="1rem"
             color={favor ? colors.red1 : colors.gray4}
