@@ -24,8 +24,11 @@ export const PlatformIconTypes = Object.keys(icons) as PlatformIconType[];
 export type PlatformIconProps = {
   /** 사용 할 아이콘 타입 */
   icon: PlatformIconType;
-  /** px, rem 등 단위를 포함한 css size */
-  size?: string;
+  /** px기반의 size width와 height 모두 맞춰집니다. */
+  size?: number;
+  /** true라면 아이콘을 둥글게 표현, 아니라면 squere 형식으로 표현
+   */
+  IsEllipse?: boolean;
 };
 
 const defaultProps: Partial<PlatformIconProps> = {
@@ -34,7 +37,8 @@ const defaultProps: Partial<PlatformIconProps> = {
 };
 
 type ImageProps = {
-  size?: string;
+  size?: number;
+  IsEllipse?: boolean;
 };
 
 const Image = styled('img')<ImageProps>`
@@ -51,9 +55,13 @@ const Image = styled('img')<ImageProps>`
  *
  * 스타일로 모양새를 설정 할 때에는 `color`로 색상을 설정하고 `size`로 크기를 설정하세요.
  */
-const PlatformIcon = ({ icon, size }: PlatformIconProps): ReactElement => {
+const PlatformIcon = ({
+  icon,
+  size,
+  IsEllipse,
+}: PlatformIconProps): ReactElement => {
   const url = icons[icon];
-  return <Image src={url} size={size} />;
+  return <Image src={url} size={size} IsEllipse={IsEllipse} />;
 };
 
 PlatformIcon.defaultProps = defaultProps;
