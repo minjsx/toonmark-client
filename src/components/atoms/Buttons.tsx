@@ -4,7 +4,7 @@ export const ButtonPrimary = styled('button')`
   display: flex;
   /* width: 100%;
   height: 100%; */
-  width: 7.5rem;
+  width: 6.25rem;
   height: 2.5rem;
 
   border-radius: 1rem;
@@ -30,7 +30,7 @@ export const ButtonPrimaryLight = styled('button')`
   display: flex;
   /* width: 100%;
   height: 100%; */
-  width: 7.5rem;
+  width: 6.25rem;
   height: 2.5rem;
 
   border-radius: 1rem;
