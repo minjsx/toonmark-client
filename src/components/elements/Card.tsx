@@ -101,7 +101,7 @@ function Card(props: Props): ReactElement {
       <TextWrapper>
         <CardTitle onClick={onCardClick}>{title}</CardTitle>
         <CardFooter>
-          <PlatformIcon icon="NAVER" size="24px" />
+          <PlatformIcon icon="NAVER" size={24} />
           <Icon
             onClick={onHeartClick}
             icon="FavorFill"
