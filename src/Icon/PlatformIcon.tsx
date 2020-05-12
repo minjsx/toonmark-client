@@ -31,7 +31,7 @@ export type PlatformIconProps = {
 
 const defaultProps: Partial<PlatformIconProps> = {
   icon: 'NAVER',
-  size: '24px',
+  size: 24,
 };
 
 type ImageProps = {

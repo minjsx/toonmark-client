@@ -32,7 +32,7 @@ platformIcon.story = {
 };
 
 export const customSize = (): ReactElement => (
-  <PlatformIcon icon="NAVER" size="2rem" />
+  <PlatformIcon icon="NAVER" size={36} />
 );
 
 export const listOfPlatformIcons = (): ReactElement => {
