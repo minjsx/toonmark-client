@@ -32,7 +32,7 @@ const Templete = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 2.5rem;
-  width: 30rem;
+  width: 28.5rem;
   border-radius: 0.625rem;
   background: ${(props): string => props.theme.secondaryBackground};
   padding-left: 1.125rem;
