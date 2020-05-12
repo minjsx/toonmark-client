@@ -12,8 +12,7 @@ const icons = {
     'https://socialdotlezhindotcom.files.wordpress.com/2017/02/cropped-cropped-blog1.png?w=200',
   TOOMICS:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5KP0Yiis1Q2uImHTndaVsZ1O8GTZLMXT2HvYvCLHcTC_MwrOK&usqp=CAU',
-  TOPTOON:
-    'https://image.winudf.com/v2/image1/bmV0LnRvcHRvb24uYW5kcm9pZC5hcHBzX2ljb25fMTU1Mzc4MDk5N18wMTc/icon.png?w=&fakeurl=1',
+  TOPTOON: 'https://smurfs.toptoon.com/assets/favicon/apple-icon-180x180.png',
   MISTERBLUE:
     'https://pbs.twimg.com/profile_images/958625612129685506/7uVmsqEG_400x400.jpg',
 };
