@@ -8,7 +8,7 @@ export default {
   component: SearchBar,
   decorators: [withKnobs],
   parameters: {
-    componentSubtitle: '정보를 효율적이게 전달해주는 "카드" 컴포넌트',
+    componentSubtitle: '검색을 제공하는 Search Bar 컴포넌트',
   },
 };
 
