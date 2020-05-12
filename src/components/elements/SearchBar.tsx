@@ -35,8 +35,24 @@ const Templete = styled.div`
   width: 28.5rem;
   border-radius: 0.625rem;
   background: ${(props): string => props.theme.secondaryBackground};
-  padding-left: 1.125rem;
-  padding-right: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+`;
+
+const IconWrapper = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  background: transparent;
+  border-width: initial;
+  border-style: none;
+  border-color: initial;
+  border-image: initial;
+  outline: none;
+  border-radius: 50%;
 `;
 
 export default function SearchBar({
@@ -54,7 +70,9 @@ export default function SearchBar({
         value={value}
         onChange={onChangeText}
       />
-      <Icon icon="Search" size={'1rem'} />
+      <IconWrapper>
+        <Icon icon="Search" size={16} />
+      </IconWrapper>
     </Templete>
   );
 }
