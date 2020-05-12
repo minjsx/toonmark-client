@@ -42,11 +42,13 @@ type ImageProps = {
 };
 
 const Image = styled('img')<ImageProps>`
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   &:hover {
     cursor: pointer;
   }
-  width: ${(props): string => props.size || '1rem'};
-  height: ${(props): string => props.size || '1rem'};
+  width: ${(props): number => props.size || 24}px;
+  height: ${(props): number => props.size || 24}px;
+  border-radius: ${(props): number => (props.IsEllipse ? 50 : 0)}%;
 `;
 
 /** 아이콘을 보여주고 싶을 땐 `Icon` 컴포넌트를 사용하세요.
