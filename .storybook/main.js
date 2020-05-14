@@ -3,9 +3,15 @@ module.exports = {
   addons: [
     '@storybook/addon-actions',
     '@storybook/addon-links',
-    '@storybook/addon-knobs',
     '@storybook/addon-knobs/register',
-    '@storybook/addon-docs',
+    {
+      name: '@storybook/addon-docs',
+      options: {
+        configureJSX: true,
+        babelOptions: {},
+        sourceLoaderOptions: null,
+      },
+    },
     'themeprovider-storybook/register',
   ],
   webpackFinal: async (config) => {
@@ -21,7 +27,7 @@ module.exports = {
       test: /\.svg$/,
       use: ['@svgr/webpack', assetLoader],
     });
-    
+
     config.module.rules.push({
       test: /\.(ts|tsx)$/,
       use: [
