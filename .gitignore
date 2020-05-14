@@ -7,3 +7,5 @@ coverage/
 package-lock.json
 yarn.lock
 .env
+storybook-static
+now.json
