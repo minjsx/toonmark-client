@@ -1,7 +1,7 @@
 import { DefaultTheme } from 'styled-components';
 import { ThemeType } from './types';
 
-const size = {
+export const size = {
   mobileS: '320px',
   mobileM: '375px',
   mobileL: '425px',
