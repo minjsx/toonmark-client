@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled, { FlattenInterpolation, ThemeProps } from 'styled-components';
 import { Typhography } from '../../Typhography';
+import { useThemeContext } from '../../providers/ThemeProvider';
 
 export type FontType = keyof typeof Typhography;
 
@@ -20,10 +21,13 @@ interface Props {
 }
 
 function Label({ fontType, text, color }: Props): ReactElement {
+  const { theme } = useThemeContext();
+  //@ts-ignore  
+  const defaultColor = theme.fontColor as string;
   const fontStyle: FlattenInterpolation<ThemeProps<FontType>> =
     Typhography[fontType];
   return (
-    <Span fontStyle={fontStyle} color={color}>
+    <Span fontStyle={fontStyle} color={color || defaultColor}>
       {text}
     </Span>
   );
@@ -32,7 +36,6 @@ function Label({ fontType, text, color }: Props): ReactElement {
 Label.defaultProps = {
   text: 'Label',
   fontType: 'H6Medium',
-  color: 'black',
 } as Partial<Props>;
 
 export default Label;
