@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import Button from '../elements/Button';
-import { IC_GOOGLE_W } from '../../utils/Icons';
+import HeaderTemplate from '../templete/HeaderTemplate';
 import { User } from '../../types';
 import { device } from '../../theme';
 import { getString } from '../../../STRINGS';
@@ -9,6 +8,8 @@ import styled from 'styled-components';
 import { useAppContext } from '../../providers/AppProvider';
 import { useHistory } from 'react-router-dom';
 import { useThemeContext } from '../../providers/ThemeProvider';
+import Label from '../atoms/Label';
+import WeekSelector from '../elements/WeekSelector';
 
 const Container = styled.div`
   display: flex;
@@ -27,19 +28,16 @@ const Container = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  @media ${device.mobileS} {
-    max-width: 768px;
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-  }
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 4.55vh 12.85vw;
+`;
 
-  @media ${device.tablet} {
-    justify-content: flex-start;
-    align-items: flex-start;
-    margin-top: 400px;
-  }
+const TitleWrapper = styled.div`
+  display: flex;
+  align-self: stretch;
+  padding-bottom: 4.55vh;
 `;
 
 const ButtonWrapper = styled.div`
@@ -100,26 +98,34 @@ function Intro(): ReactElement {
 
   return (
     <Container>
+      <HeaderTemplate />
       <ContentWrapper>
-        <Text>{state.user.displayName}</Text>
-        <Text>{state.user.age ? state.user.age : ''}</Text>
-        <Text>{state.user.job}</Text>
+        <TitleWrapper>
+          <Label text={getString('MYTOONMARK')} fontType="H5Medium" />
+        </TitleWrapper>
+        <WeekSelector />
       </ContentWrapper>
-      <ButtonWrapper>
-        <Button
-          imgSrc={IC_GOOGLE_W}
-          isLoading={isLoggingIn}
-          onClick={(): void => onLogin()}
-          text={getString('LOGIN')}
-        />
-        <Button onClick={(): void => navigate()} text={getString('NAVIGATE')} />
-        <Button
-          onClick={(): void => changeThemeType()}
-          text={getString('CHANGE_THEME')}
-        />
-      </ButtonWrapper>
     </Container>
   );
 }
 
 export default Intro;
+
+//  <ContentWrapper>
+//   <Text>{state.user.displayName}</Text>
+//   <Text>{state.user.age ? state.user.age : ''}</Text>
+//   <Text>{state.user.job}</Text>
+//  </ContentWrapper>
+//  <ButtonWrapper>
+//   <Button
+//     imgSrc={IC_GOOGLE_W}
+//     isLoading={isLoggingIn}
+//     onClick={(): void => onLogin()}
+//     text={getString('LOGIN')}
+//   />
+//   <Button onClick={(): void => navigate()} text={getString('NAVIGATE')} />
+//   <Button
+//     onClick={(): void => changeThemeType()}
+//     text={getString('CHANGE_THEME')}
+//   />
+// </ButtonWrapper>
