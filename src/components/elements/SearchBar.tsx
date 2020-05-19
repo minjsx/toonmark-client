@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import Icon from '../../Icon/Icon';
 import { Typhography } from '../../Typhography';
-import { colors } from '../../theme';
+import { colors, device } from '../../theme';
 import styled from 'styled-components';
 import { useInput } from '../../hooks';
 
@@ -11,6 +11,19 @@ interface Props {
   onChange?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
   onClick?: (event?: React.MouseEvent<HTMLElement, MouseEvent>) => void;
 }
+
+const Templete = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.625rem;
+  background: ${(props): string => props.theme.secondaryBackground};
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+`;
 
 const Input = styled('input')`
   ${Typhography.SubTitle2};
@@ -24,19 +37,6 @@ const Input = styled('input')`
   ::placeholder {
     color: ${colors.gray3};
   }
-`;
-
-const Templete = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 2.5rem;
-  width: 28.5rem;
-  border-radius: 0.625rem;
-  background: ${(props): string => props.theme.secondaryBackground};
-  padding-left: 1rem;
-  padding-right: 0.5rem;
 `;
 
 const IconWrapper = styled.a`
