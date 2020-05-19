@@ -4,5 +4,7 @@ module.exports = {
   rules: {
     'react/display-name': 0,
     '@typescript-eslint/no-var-requires': 0,
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-empty-interface': false,
   },
 };
