@@ -9,7 +9,6 @@ const Layout = styled.header`
   justify-content: space-between;
   width: 100vw;
   height: 3.75rem;
-  padding: 0 8.75rem;
   background-color: ${colors.orange1};
 `;
 
