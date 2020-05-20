@@ -63,7 +63,10 @@ const HeaderLeft = styled.div`
 `;
 
 const HeaderRight = styled.nav`
+  display: grid;
+  align-items: center;
   width: 20vw;
+  height: 100%;
   padding-right: 10vw;
   @media ${device.tablet} {
     width: 50vw;
@@ -144,5 +147,5 @@ export default function HeaderTemplate({ isSearch }: Props): ReactElement {
 }
 
 HeaderTemplate.defaultProps = {
-  isSearch: false,
+  isSearch: true,
 } as Partial<Props>;
