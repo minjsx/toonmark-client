@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 
 import HeaderTemplate from '../templete/HeaderTemplate';
 import { User } from '../../types';
@@ -9,7 +9,9 @@ import { useAppContext } from '../../providers/AppProvider';
 import { useHistory } from 'react-router-dom';
 import { useThemeContext } from '../../providers/ThemeProvider';
 import Label from '../atoms/Label';
-import WeekSelector from '../elements/WeekSelector';
+import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
+import Card from '../elements/Card';
+import { fetchData } from '../../apis/sample';
 
 const Container = styled.div`
   display: flex;
@@ -18,11 +20,9 @@ const Container = styled.div`
   align-self: stretch;
   overflow: scroll;
   background: ${(props): string => props.theme.background};
-
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: hidden;
 `;
 
 const ContentWrapper = styled.div`
@@ -31,13 +31,36 @@ const ContentWrapper = styled.div`
   align-self: stretch;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 4.55vh 12.85vw;
+  margin: 0 12.85vw;
+  height: 100%;
+`;
+
+const TopSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2.5rem 0;
+  border: solid 1px black;
+`;
+
+const CardSection = styled.div`
+  width: 100%;
+  padding: 2.5rem 0;
+  display: grid;
+  justify-content: center;
+  align-content: flex-start;
+  grid-gap: 1.25rem 1rem;
+  grid-template-columns: repeat(auto-fill, 13.375rem);
+  grid-auto-rows: minmax(20.25rem, auto);
 `;
 
 const TitleWrapper = styled.div`
   display: flex;
   align-self: stretch;
-  padding-bottom: 4.55vh;
+  padding: 2.5rem 0;
+  overflow: visible;
 `;
 
 const ButtonWrapper = styled.div`
@@ -69,23 +92,25 @@ function Intro(): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timer: any;
   const history = useHistory();
+  const [selectedDay, setSelectedDay] = useState<WeekDayType>('ALL');
+
+  const handleDayClick = (key: WeekDayType) => () => {
+    setSelectedDay(key);
+    getWebtoonData('daum', key);
+  };
+
   const { state, setUser, resetUser } = useAppContext();
   const { changeThemeType } = useThemeContext();
   const [isLoggingIn, setIsLoggingIn] = React.useState(false);
 
-  const onLogin = (): void => {
-    resetUser();
-    setIsLoggingIn(true);
-    timer = setTimeout(() => {
-      const user: User = {
-        displayName: 'Hey, Toonmark',
-        age: 20,
-        job: 'Hello!',
-      };
-      setUser(user);
-      setIsLoggingIn(false);
-      clearTimeout(timer);
-    }, 1000);
+  const getWebtoonData = async (
+    platform: string,
+    weekday: string,
+  ): Promise<void> => {
+    const data = await fetchData(`/${platform}/${weekday.toLowerCase()}`).then(
+      (res) => res.ok && res.json(),
+    );
+    console.log(data);
   };
 
   const navigate = (): void => {
@@ -103,7 +128,21 @@ function Intro(): ReactElement {
         <TitleWrapper>
           <Label text={getString('MYTOONMARK')} fontType="H5Medium" />
         </TitleWrapper>
-        <WeekSelector />
+        <WeekSelector selectedItem={selectedDay} handleClick={handleDayClick} />
+        <CardSection>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </CardSection>
       </ContentWrapper>
     </Container>
   );
