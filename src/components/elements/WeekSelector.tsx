@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useCallback } from 'react';
 import Button from './Button';
 import { Weekday } from '../../types';
 import styled from 'styled-components';
@@ -7,6 +7,7 @@ import { size } from '../../theme';
 
 interface Props {
   selectedItem?: WeekDayType;
+  handleClick?: (key: WeekDayType) => () => void;
 }
 
 export type WeekDayType = 'ALL' | keyof typeof Weekday;
@@ -29,7 +30,7 @@ const weekdays: WeekDays[] = [
   { key: 'TEN', title: '열흘', shortTitle: '열흘' },
 ];
 
-const Templete = styled.section`
+const Section = styled.section`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -37,26 +38,29 @@ const Templete = styled.section`
   align-items: center;
   width: 100%;
   height: 100%;
-  max-height: 2.5rem;
-  overflow: none;
+  max-height: 3.5rem;
 `;
 
-export default function WeekSelector({ selectedItem }: Props): ReactElement {
+export default function WeekSelector({
+  selectedItem,
+  handleClick,
+}: Props): ReactElement {
   const { width } = useWIndowDemensions();
-
   return (
-    <Templete>
+    <Section>
       {weekdays.map(({ key, title, shortTitle }) => (
         <Button
           key={key}
+          onClick={handleClick(key)}
           text={width > parseInt(size.laptop, 10) ? title : shortTitle}
           theme={key === selectedItem ? 'Primary' : 'PrimaryLight'}
         />
       ))}
-    </Templete>
+    </Section>
   );
 }
 
 WeekSelector.defaultProps = {
   selectedItem: 'ALL',
+  handleClick: (key) => {},
 } as Partial<Props>;
