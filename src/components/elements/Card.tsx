@@ -36,6 +36,7 @@ const CardContainer = styled('button')`
   border-radius: 1.25rem;
   background: ${(props): string => props.theme.secondaryBackground};
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow-x: unset;
 `;
 
 const CardImage = styled('img')`
