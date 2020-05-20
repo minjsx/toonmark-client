@@ -21,6 +21,14 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     historyApiFallback: true,
+    proxy: {
+      '/api/**': {
+        target: 'https://us-central1-toonmark-api.cloudfunctions.net/api',
+        pathRewrite: { '^/api': '' },
+        secure: false,
+        changeOrigin: true,
+      },
+    },
   },
   module: {
     rules: [
