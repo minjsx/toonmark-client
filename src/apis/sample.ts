@@ -1,4 +1,27 @@
-export const ROOT_URL = 'http://localhost:3000/api';
+export const fetchData = async (
+  url: string,
+  signal?: AbortSignal | undefined,
+) => {
+  if (!url) {
+    throw new Error('No request object');
+  }
+
+  const fetchOption: RequestInit = {
+    signal,
+    method: 'GET',
+    headers: new Headers({
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    }),
+  };
+
+  try {
+    const res: Response = await fetch(`/api/webtoon${url}`, fetchOption);
+    return res;
+  } catch (err) {
+    throw new Error(err);
+  }
+};
 
 export const sample = async (
   body: object | undefined,
@@ -19,7 +42,7 @@ export const sample = async (
   };
 
   try {
-    const res: Response = await fetch(`${ROOT_URL}`, fetchOption);
+    const res: Response = await fetch(``, fetchOption);
     return res;
   } catch (err) {
     throw new Error(err);
