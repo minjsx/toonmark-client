@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
 import HeaderTemplate from '../templete/HeaderTemplate';
-import { User } from '../../types';
 import { device } from '../../theme';
 import { getString } from '../../../STRINGS';
 import styled from 'styled-components';
@@ -12,6 +12,8 @@ import Label from '../atoms/Label';
 import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
 import Card from '../elements/Card';
 import { fetchData } from '../../apis/sample';
+
+interface MatchParams {}
 
 const Container = styled.div`
   display: flex;
@@ -88,7 +90,7 @@ const Text = styled.span`
   color: ${(props): string => props.theme.fontColor};
 `;
 
-function Intro(): ReactElement {
+function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let timer: any;
   const history = useHistory();
@@ -105,11 +107,14 @@ function Intro(): ReactElement {
 
   const getWebtoonData = async (
     platform: string,
-    weekday: string,
+    weekday: WeekDayType,
   ): Promise<void> => {
-    const data = await fetchData(`/${platform}/${weekday.toLowerCase()}`).then(
-      (res) => res.ok && res.json(),
-    );
+    const url =
+      weekday !== 'ALL'
+        ? `/${platform}/` + weekday.toLowerCase()
+        : `/${platform}`;
+
+    const data = await fetchData(url).then((res) => res.ok && res.json());
     console.log(data);
   };
 
