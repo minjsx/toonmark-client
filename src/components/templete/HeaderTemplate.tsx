@@ -1,14 +1,17 @@
-import PlatformIcon, { PlatformIconTypes } from '../../Icon/PlatformIcon';
 import React, { ReactElement, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import { colors, device } from '../../theme';
 import HeaderLayout from '../layouts/HeaderLayout';
-import Icon from '../../Icon/Icon';
+
 import Label from '../atoms/Label';
 import SearchBar from '../elements/SearchBar';
 import Switch from 'react-switch';
 import styled from 'styled-components';
 import { useThemeContext } from '../../providers/ThemeProvider';
 import { ThemeType } from '../../types';
+import PlatformNavigation from '../elements/PlatformNavigation';
+
 interface Props {
   isSearch?: boolean;
 }
@@ -29,18 +32,6 @@ const Container = styled.div``;
 const TitleWrapper = styled.div`
   cursor: pointer;
   padding-left: 1vw;
-`;
-
-const SearchIconWrapper = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.5);
-  outline: none;
-  border-radius: 50%;
 `;
 
 const HeaderLeft = styled.div`
@@ -82,18 +73,6 @@ const HeaderRight = styled.nav`
   }
 `;
 
-const ListWrapper = styled.ul`
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-  list-style-type: none;
-  justify-content: space-between;
-  align-items: center;
-`;
-const List = styled.li`
-  border-radius: 1.25rem;
-`;
-
 export default function HeaderTemplate({ isSearch }: Props): ReactElement {
   const { changeThemeType, themeType } = useThemeContext();
   const [themeSwitch, setThemeSwitch] = useState<boolean>(
@@ -127,25 +106,12 @@ export default function HeaderTemplate({ isSearch }: Props): ReactElement {
         </TitleWrapper>
       </HeaderLeft>
       <HeaderRight>
-        {isSearch ? (
-          <SearchBar />
-        ) : (
-          <ListWrapper>
-            <SearchIconWrapper>
-              <Icon icon="Search" color="white" size={16} />
-            </SearchIconWrapper>
-            {PlatformIconTypes.map((platform, index) => (
-              <List key={index}>
-                <PlatformIcon icon={platform} size={40} IsEllipse />
-              </List>
-            ))}
-          </ListWrapper>
-        )}
+        {isSearch ? <SearchBar /> : <PlatformNavigation />}
       </HeaderRight>
     </HeaderLayout>
   );
 }
 
 HeaderTemplate.defaultProps = {
-  isSearch: true,
+  isSearch: false,
 } as Partial<Props>;
