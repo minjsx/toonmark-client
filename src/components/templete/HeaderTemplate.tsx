@@ -102,7 +102,9 @@ export default function HeaderTemplate({ isSearch }: Props): ReactElement {
           checked={themeSwitch}
         />
         <TitleWrapper>
-          <Label text="TOONMARK" color="white" fontType="H5Bold" />
+          <Link to="/">
+            <Label text="TOONMARK" color="white" fontType="H5Bold" />
+          </Link>
         </TitleWrapper>
       </HeaderLeft>
       <HeaderRight>
