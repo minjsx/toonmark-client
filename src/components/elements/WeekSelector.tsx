@@ -1,4 +1,5 @@
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement } from 'react';
+
 import Button from './Button';
 import { Weekday } from '../../types';
 import styled from 'styled-components';
