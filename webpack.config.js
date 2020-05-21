@@ -23,7 +23,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       '/api/**': {
-        target: 'https://us-central1-toonmark-api.cloudfunctions.net/api',
+        target: 'https://asia-east2-toonmark-api.cloudfunctions.net/api',
         pathRewrite: { '^/api': '' },
         secure: false,
         changeOrigin: true,
