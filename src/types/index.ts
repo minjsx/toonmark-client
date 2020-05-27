@@ -19,6 +19,8 @@ export enum Platform {
   MISTERBLUE = 'misterblue', //  미스터블루
 }
 
+export type WebtoonPlatform = typeof Platform[keyof typeof Platform];
+
 export enum Weekday {
   MON = 'mon', //  월
   TUE = 'tue', //  화
@@ -28,4 +30,17 @@ export enum Weekday {
   SAT = 'sat', //  토
   SUN = 'sun', //  일
   TEN = 'ten', //  열흘(일부 플랫폼만)
+}
+
+export interface IWebtoon {
+  title: string; //  제목
+  id: string | number; //  ID
+  weekday: string; //  연재 요일
+  thumbnail: string; //  썸네일 이미지 주소
+  platform: WebtoonPlatform; //  연재처
+  link: string; //  웹툰 주소
+  isUp: boolean; //  업로드 상태
+  isBreak: boolean; //  휴재 상태
+  author: string; //  작가
+  genre: string; //  장르
 }
