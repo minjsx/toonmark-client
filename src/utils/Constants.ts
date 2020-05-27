@@ -8,6 +8,6 @@ const STATUS_CODE = {
   UNAUTHORIZED: 401, // 401
 };
 
-export {
-  STATUS_CODE as statusCode,
-};
+const CardDummyArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
+
+export { STATUS_CODE as statusCode, CardDummyArray as cardDummies };
