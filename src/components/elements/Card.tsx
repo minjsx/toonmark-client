@@ -1,12 +1,13 @@
 import React, { CSSProperties, ReactElement } from 'react';
-import Icon from '../../Icon/Icon';
-import { Platform } from '../../types';
-import PlatformIcon from '../../Icon/PlatformIcon';
-import { Typhography } from '../../Typhography';
-import { colors } from '../../theme';
 import styled from 'styled-components';
 
-type WebtoonPlatform = keyof typeof Platform;
+import { colors } from '../../theme';
+import { Typhography } from '../../Typhography';
+import { WebtoonPlatform } from '../../types';
+
+import Icon from '../../Icon/Icon';
+import PlatformIcon from '../../Icon/PlatformIcon';
+import DefaultImage from '../../assets/card_placeholder.png';
 
 interface Props {
   id?: string;
@@ -98,11 +99,16 @@ function Card(props: Props): ReactElement {
   } = props;
   return (
     <CardContainer>
-      <CardImage onClick={onCardClick} src={thumbnail} />
+      <CardImage
+        
+        onClick={onCardClick}
+        src={thumbnail || DefaultImage}
+        alt={title}
+      />
       <TextWrapper>
         <CardTitle onClick={onCardClick}>{title}</CardTitle>
         <CardFooter>
-          <PlatformIcon icon="NAVER" size={24} />
+          <PlatformIcon icon={platform} size={24} />
           <Icon
             onClick={onHeartClick}
             icon="FavorFill"
@@ -116,10 +122,8 @@ function Card(props: Props): ReactElement {
 }
 
 Card.defaultProps = {
-  theme: 'Primary',
-  title: '오늘부터 0촌! - 진돌&히디의 우당탕 결혼일기',
-  thumbnail:
-    'https://image-comic.pstatic.net/webtoon/event/thumbnail/2/upload_20200330163500/626907_m.jpg',
-};
+  title: '',
+  thumbnail: '',
+} as Partial<Props>;
 
 export default Card;
