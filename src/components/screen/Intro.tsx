@@ -4,14 +4,15 @@ import { RouteComponentProps } from 'react-router-dom';
 import HeaderTemplate from '../templete/HeaderTemplate';
 import { device } from '../../theme';
 import { getString } from '../../../STRINGS';
+import { cardDummies } from '../../utils/Constants';
+
 import styled from 'styled-components';
 import { useAppContext } from '../../providers/AppProvider';
 import { useHistory } from 'react-router-dom';
 import { useThemeContext } from '../../providers/ThemeProvider';
 import Label from '../atoms/Label';
 import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
-import Card from '../elements/Card';
-import { fetchData } from '../../apis/sample';
+import CardTemplate from '../templete/CardTemplate';
 
 interface MatchParams {}
 
@@ -92,31 +93,15 @@ const Text = styled.span`
 
 function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let timer: any;
   const history = useHistory();
   const [selectedDay, setSelectedDay] = useState<WeekDayType>('ALL');
 
   const handleDayClick = (key: WeekDayType) => () => {
     setSelectedDay(key);
-    getWebtoonData('daum', key);
   };
 
   const { state, setUser, resetUser } = useAppContext();
   const { changeThemeType } = useThemeContext();
-  const [isLoggingIn, setIsLoggingIn] = React.useState(false);
-
-  const getWebtoonData = async (
-    platform: string,
-    weekday: WeekDayType,
-  ): Promise<void> => {
-    const url =
-      weekday !== 'ALL'
-        ? `/${platform}/` + weekday.toLowerCase()
-        : `/${platform}`;
-
-    const data = await fetchData(url).then((res) => res.ok && res.json());
-    console.log(data);
-  };
 
   const navigate = (): void => {
     const location: object = {
@@ -135,18 +120,9 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
         </TitleWrapper>
         <WeekSelector selectedItem={selectedDay} handleClick={handleDayClick} />
         <CardSection>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {cardDummies.map((key) => (
+            <CardTemplate key={key} />
+          ))}
         </CardSection>
       </ContentWrapper>
     </Container>
@@ -154,22 +130,3 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
 }
 
 export default Intro;
-
-//  <ContentWrapper>
-//   <Text>{state.user.displayName}</Text>
-//   <Text>{state.user.age ? state.user.age : ''}</Text>
-//   <Text>{state.user.job}</Text>
-//  </ContentWrapper>
-//  <ButtonWrapper>
-//   <Button
-//     imgSrc={IC_GOOGLE_W}
-//     isLoading={isLoggingIn}
-//     onClick={(): void => onLogin()}
-//     text={getString('LOGIN')}
-//   />
-//   <Button onClick={(): void => navigate()} text={getString('NAVIGATE')} />
-//   <Button
-//     onClick={(): void => changeThemeType()}
-//     text={getString('CHANGE_THEME')}
-//   />
-// </ButtonWrapper>
