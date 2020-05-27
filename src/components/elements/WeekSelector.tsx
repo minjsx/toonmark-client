@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import Button from './Button';
-import { Weekday } from '../../types';
+import { Weekday, Platform } from '../../types';
 import styled from 'styled-components';
 import { useWIndowDemensions } from '../../hooks';
 import { size } from '../../theme';
@@ -9,6 +9,7 @@ import { size } from '../../theme';
 interface Props {
   selectedItem?: WeekDayType;
   handleClick?: (key: WeekDayType) => () => void;
+  currentPlatform?: string;
 }
 
 export type WeekDayType = 'ALL' | keyof typeof Weekday;
@@ -45,11 +46,18 @@ const Section = styled.section`
 export default function WeekSelector({
   selectedItem,
   handleClick,
+  currentPlatform,
 }: Props): ReactElement {
   const { width } = useWIndowDemensions();
+  const filteredWeekdays =
+    currentPlatform === 'lezhin'
+      ? weekdays
+      : currentPlatform === 'toomics'
+      ? weekdays
+      : weekdays.slice(0, weekdays.length - 2);
   return (
     <Section>
-      {weekdays.map(({ key, title, shortTitle }) => (
+      {filteredWeekdays.map(({ key, title, shortTitle }) => (
         <Button
           key={key}
           onClick={handleClick(key)}
