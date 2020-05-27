@@ -100,7 +100,7 @@ function Card(props: Props): ReactElement {
   return (
     <CardContainer>
       <CardImage
-        
+        referrerPolicy="no-referrer"
         onClick={onCardClick}
         src={thumbnail || DefaultImage}
         alt={title}
