@@ -1,25 +1,26 @@
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
+import { WebtoonPlatform } from '../types';
 
 // 스토리에서 불러오기 위함
 const icons = {
-  NAVER:
+  naver:
     'https://pbs.twimg.com/profile_images/1162296345173975042/DHZimJgv_400x400.jpg',
-  DAUM: 'https://u1.daumcdn.net/webtoon/op/webtoon_home_text_ver_20190514.png',
-  KAKAO:
+  daum: 'https://u1.daumcdn.net/webtoon/op/webtoon_home_text_ver_20190514.png',
+  kakao:
     'https://dn-img-page.kakao.com/download/resource?kid=b6iau6/hydtsoiYqF/0gzoOvKflPuGyFDWXNDZJ1',
-  LEZHIN:
+  lezhin:
     'https://socialdotlezhindotcom.files.wordpress.com/2017/02/cropped-cropped-blog1.png?w=200',
-  TOOMICS:
+  toomics:
     'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS5KP0Yiis1Q2uImHTndaVsZ1O8GTZLMXT2HvYvCLHcTC_MwrOK&usqp=CAU',
-  TOPTOON: 'https://smurfs.toptoon.com/assets/favicon/apple-icon-180x180.png',
-  MISTERBLUE:
+  toptoon: 'https://smurfs.toptoon.com/assets/favicon/apple-icon-180x180.png',
+  misterblue:
     'https://pbs.twimg.com/profile_images/958625612129685506/7uVmsqEG_400x400.jpg',
-};
+} as const;
 
 type PlatformIconType = keyof typeof icons;
 
-export const PlatformIconTypes = Object.keys(icons) as PlatformIconType[];
+export const PlatformIconTypes = Object.keys(icons) as WebtoonPlatform[];
 
 export type PlatformIconProps = {
   /** 사용 할 아이콘 타입 */
@@ -32,7 +33,7 @@ export type PlatformIconProps = {
 };
 
 const defaultProps: Partial<PlatformIconProps> = {
-  icon: 'NAVER',
+  icon: 'naver',
   size: 24,
 };
 
