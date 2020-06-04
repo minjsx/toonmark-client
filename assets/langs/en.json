@@ -1,5 +1,13 @@
 {
   "MYTOONMARK": "My Toonmark",
+  "NAVER": "Naver",
+  "DAUM": "Daum",
+  "LEZHIN": "Lezhin Comics",
+  "KAKAO": "Kakao Page",
+  "TOOMICS": "Toomics",
+  "MISTERBLUE": "Mister Blue",
+  "EMPTY_FAVOR_WEBTOON": "There is no webtoon of interest yet.",
+  "EMPTY_FAVOR_WEBTOON_LINK": "Let's go add webtoons?",
   "BUTTON": "Button",
   "SIGNUP": "Sign Up",
   "LOGIN": "Login",

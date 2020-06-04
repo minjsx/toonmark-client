@@ -1,5 +1,13 @@
 {
   "MYTOONMARK": "내 툰마크",
+  "NAVER": "네이버 웹툰",
+  "DAUM": "다음 웹툰",
+  "LEZHIN": "레진 코믹스 웹툰",
+  "KAKAO": "카카오 페이지 웹툰",
+  "TOOMICS": "투믹스 웹툰",
+  "MISTERBLUE": "미스터 블루 웹툰",
+  "EMPTY_FAVOR_WEBTOON": "아직 관심 웹툰이 없어요.",
+  "EMPTY_FAVOR_WEBTOON_LINK": "추가 하러 가볼까요?",
   "BUTTON": "버튼",
   "SIGNUP": "회원가입",
   "LOGIN": "로그인",
