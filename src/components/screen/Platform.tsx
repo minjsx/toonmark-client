@@ -68,9 +68,10 @@ function Platform({
 }: RouteComponentProps<MatchParams>): ReactElement {
   const { platform } = match.params;
   //TODO: contextAPI로 global State로 변경하기
-  const [storageData, setStorageData] = useState<IWebtoon[]>(
-    JSON.parse(getStorage('data')) as IWebtoon[],
-  );
+  const {
+    state: { favorWebtoons },
+    setFavorWebtoon,
+  } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedDay, setSelectedDay] = useState<WeekDayType>(getWeekday());
   const [response, setResponse] = useState<IWebtoon[]>([]);
@@ -143,34 +144,15 @@ function Platform({
     event?: React.MouseEvent<SVGSVGElement, MouseEvent>,
   ): void => {
     event.preventDefault();
-    const distinctIndex = storageData.findIndex(
-      (toon) => toon.id === webtoon.id,
-    );
-    const filteredArray =
-      distinctIndex === -1
-        ? storageData.concat(webtoon)
-        : storageData.filter((toon) => toon.id !== webtoon.id);
-    setStorage('data', JSON.stringify(filteredArray));
-    setStorageData(filteredArray);
+    setFavorWebtoon(webtoon);
   };
-
-  function objectsAreSame<T extends IWebtoon[]>(x : T, y : T) {
-    let objectsAreSame = true;
-    for(let propertyName in x) {
-       if(x[propertyName] !== y[propertyName]) {
-          objectsAreSame = false;
-          break;
-       }
-    }
-    return objectsAreSame;
- }
 
   return (
     <Container>
       <HeaderTemplate />
       <ContentWrapper>
         <TitleWrapper>
-          <Label text={getString('MYTOONMARK')} fontType="H5Medium" />
+          <Label text={getString(platform.toUpperCase())} fontType="H5Medium" />
         </TitleWrapper>
         <WeekSelector
           selectedItem={selectedDay}
@@ -180,15 +162,15 @@ function Platform({
         <CardSection>
           {loading
             ? cardDummies.map((key) => <CardTemplate key={key} />)
-            : response?.map((webtoon, idx, array) => (
+            : response.map((webtoon, idx, array) => (
                 <Card
                   key={webtoon.id}
                   platform={webtoon.platform}
                   thumbnail={webtoon.thumbnail}
                   title={webtoon.title}
                   onCardClick={onCardClick(webtoon.link)}
-                  onHeartClick={onHeartClick(webtoon)}                  
-                  favor={objectsAreSame(array, storageData)}
+                  onHeartClick={onHeartClick(webtoon)}
+                  favor={favorWebtoons.some((data) => data.id === webtoon.id)}
                 />
               ))}
         </CardSection>
