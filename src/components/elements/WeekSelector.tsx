@@ -54,7 +54,7 @@ export default function WeekSelector({
       ? weekdays
       : currentPlatform === 'toomics'
       ? weekdays
-      : weekdays.slice(0, weekdays.length - 2);
+      : weekdays.slice(0, weekdays.length - 1);
   return (
     <Section>
       {filteredWeekdays.map(({ key, title, shortTitle }) => (
