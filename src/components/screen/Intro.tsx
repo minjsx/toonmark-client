@@ -73,8 +73,10 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
     setSelectedDay(key);
   };
 
-  const { state, setUser, resetUser } = useAppContext();
-  const { changeThemeType } = useThemeContext();
+  const {
+    state: { favorWebtoons },
+    setFavorWebtoon,
+  } = useAppContext();
 
   const navigate = (): void => {
     const location: object = {
@@ -82,6 +84,21 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
       state: {},
     };
     history.push(location);
+  };
+
+  const onCardClick = (link: string) => (
+    event?: React.MouseEvent<HTMLElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    window.open(link);
+    window.focus();
+  };
+
+  const onHeartClick = (webtoon: IWebtoon) => (
+    event?: React.MouseEvent<SVGSVGElement, MouseEvent>,
+  ): void => {
+    event.preventDefault();
+    setFavorWebtoon(webtoon);
   };
 
   return (
@@ -92,11 +109,40 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
           <Label text={getString('MYTOONMARK')} fontType="H5Medium" />
         </TitleWrapper>
         <WeekSelector selectedItem={selectedDay} handleClick={handleDayClick} />
-        <CardSection>
-          {cardDummies.map((key) => (
-            <CardTemplate key={key} />
-          ))}
-        </CardSection>
+        {favorWebtoons.length > 0 ? (
+          <CardSection>
+            {favorWebtoons
+              .filter((value) =>
+                selectedDay !== 'ALL'
+                  ? value.weekday.toUpperCase() === selectedDay
+                  : value,
+              )
+              .map((webtoon, idx, array) => (
+                <Card
+                  key={webtoon.id}
+                  platform={webtoon.platform}
+                  thumbnail={webtoon.thumbnail}
+                  title={webtoon.title}
+                  onCardClick={onCardClick(webtoon.link)}
+                  onHeartClick={onHeartClick(webtoon)}
+                  favor={favorWebtoons.some((data) => data.id === webtoon.id)}
+                />
+              ))}
+          </CardSection>
+        ) : (
+          <EmptyTextWrapper>
+            <Label
+              text={getString('EMPTY_FAVOR_WEBTOON')}
+              fontType="H6Regular"
+              color={colors.gray3}
+            />
+            <Label
+              text={getString('EMPTY_FAVOR_WEBTOON_LINK')}
+              fontType="H6Regular"
+              color={colors.gray3}
+            />
+          </EmptyTextWrapper>
+        )}
       </ContentWrapper>
     </Container>
   );
