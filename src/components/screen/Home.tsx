@@ -12,6 +12,7 @@ import HeaderTemplate from '../templete/HeaderTemplate';
 import Card from '../elements/Card';
 import Label from '../atoms/Label';
 import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
+
 interface MatchParams {}
 
 const Container = styled.div`
@@ -64,7 +65,7 @@ const EmptyTextWrapper = styled.div`
   overflow: visible;
 `;
 
-function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
+function Home({ match }: RouteComponentProps<MatchParams>): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const history = useHistory();
   const [selectedDay, setSelectedDay] = useState<WeekDayType>(getWeekday());
@@ -148,4 +149,4 @@ function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
   );
 }
 
-export default Intro;
+export default Home;
