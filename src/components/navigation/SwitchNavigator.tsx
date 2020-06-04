@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import React, { ReactElement } from 'react';
 
-import Intro from '../screen/Intro';
+import Home from '../screen/Home';
 import Platform from '../screen/Platform';
 // import Temp from '../screen/Temp';
 
@@ -10,7 +10,7 @@ function SwitchNavigator(): ReactElement {
     <BrowserRouter>
       <div style={{ textAlign: 'center' }}>
         <Switch>
-          <Route exact={true} path="/" component={Intro} />
+          <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/platform/:platform" component={Platform} />
           {/* <Route component={Temp} /> */}
           <Redirect path="*" to="/" />
