@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { ThemeType } from '../types';
 import createCtx from '../utils/createCtx';
 import { createTheme } from '../theme';
+import { getStorage, setStorage } from '../utils/Functions';
 
 interface Context {
   theme: DefaultTheme;
@@ -15,7 +16,9 @@ interface Context {
 }
 const [useCtx, Provider] = createCtx<Context>();
 
-export const defaultThemeType: ThemeType = ThemeType.LIGHT;
+export const defaultThemeType: ThemeType = getStorage('theme')
+  ? (getStorage('theme') as ThemeType)
+  : ThemeType.LIGHT;
 
 interface Props {
   children?: React.ReactElement;
@@ -32,6 +35,7 @@ function ThemeProvider({
     const newThemeType =
       themeType === ThemeType.LIGHT ? ThemeType.DARK : ThemeType.LIGHT;
     setThemeType(newThemeType);
+    setStorage('theme', newThemeType);
   };
   const theme = createTheme(themeType);
 
