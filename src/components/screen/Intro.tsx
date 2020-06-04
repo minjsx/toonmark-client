@@ -1,19 +1,17 @@
 import React, { ReactElement, useState } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-
-import HeaderTemplate from '../templete/HeaderTemplate';
-import { device } from '../../theme';
-import { getString } from '../../../STRINGS';
-import { cardDummies } from '../../utils/Constants';
-
+import { RouteComponentProps, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { colors } from '../../theme';
+import { getString } from '../../../STRINGS';
+import { getWeekday } from '../../utils/Functions';
+import { IWebtoon } from '../../types';
 import { useAppContext } from '../../providers/AppProvider';
-import { useHistory } from 'react-router-dom';
-import { useThemeContext } from '../../providers/ThemeProvider';
+import HeaderTemplate from '../templete/HeaderTemplate';
+
+import Card from '../elements/Card';
 import Label from '../atoms/Label';
 import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
-import CardTemplate from '../templete/CardTemplate';
-
 interface MatchParams {}
 
 const Container = styled.div`
@@ -38,16 +36,6 @@ const ContentWrapper = styled.div`
   height: 100%;
 `;
 
-const TopSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 2.5rem 0;
-  border: solid 1px black;
-`;
-
 const CardSection = styled.div`
   width: 100%;
   padding: 2.5rem 0;
@@ -66,35 +54,20 @@ const TitleWrapper = styled.div`
   overflow: visible;
 `;
 
-const ButtonWrapper = styled.div`
-  position: absolute;
+const EmptyTextWrapper = styled.div`
+  display: flex;
   flex-direction: column;
-
-  @media ${device.mobileS} {
-    bottom: 40px;
-    width: 85vw;
-    align-self: center;
-  }
-
-  @media ${device.tablet} {
-    width: 50vw;
-    right: 60px;
-    align-self: center;
-    top: 400px;
-  }
-`;
-
-const Text = styled.span`
-  font-size: 18px;
-  line-height: 1.5;
-  font-family: sans-serif;
-  color: ${(props): string => props.theme.fontColor};
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  overflow: visible;
 `;
 
 function Intro({ match }: RouteComponentProps<MatchParams>): ReactElement {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const history = useHistory();
-  const [selectedDay, setSelectedDay] = useState<WeekDayType>('ALL');
+  const [selectedDay, setSelectedDay] = useState<WeekDayType>(getWeekday());
 
   const handleDayClick = (key: WeekDayType) => () => {
     setSelectedDay(key);

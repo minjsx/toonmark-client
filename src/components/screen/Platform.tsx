@@ -5,13 +5,7 @@ import styled from 'styled-components';
 
 import { getString } from '../../../STRINGS';
 import { IWebtoon } from '../../types';
-import {
-  getStorage,
-  setStorage,  
-} from '../../utils/Functions';
-import {
-  cardDummies
-} from '../../utils/Constants';
+import { cardDummies } from '../../utils/Constants';
 
 import HeaderTemplate from '../templete/HeaderTemplate';
 import CardTemplate from '../templete/CardTemplate';
@@ -19,6 +13,8 @@ import CardTemplate from '../templete/CardTemplate';
 import Label from '../atoms/Label';
 import WeekSelector, { WeekDayType } from '../elements/WeekSelector';
 import Card from '../elements/Card';
+import { useAppContext } from '../../providers/AppProvider';
+import { getWeekday } from '../../utils/Functions';
 
 interface MatchParams {
   platform: string;
@@ -65,7 +61,6 @@ const CardSection = styled.div`
 `;
 
 const baseURL = '/api/webtoon/';
-const CardDummyArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
 
 function Platform({
   match,
@@ -77,7 +72,7 @@ function Platform({
     JSON.parse(getStorage('data')) as IWebtoon[],
   );
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedDay, setSelectedDay] = useState<WeekDayType>('ALL');
+  const [selectedDay, setSelectedDay] = useState<WeekDayType>(getWeekday());
   const [response, setResponse] = useState<IWebtoon[]>([]);
   const [error, setError] = useState<any>(null);
 
