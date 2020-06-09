@@ -14,6 +14,8 @@ import PlatformNavigation from '../elements/PlatformNavigation';
 
 interface Props {
   isSearch?: boolean;
+  text?: string;
+  onChangeText?: (event?: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ThemeToggleWrapper = styled.div`
@@ -73,7 +75,11 @@ const HeaderRight = styled.nav`
   }
 `;
 
-export default function HeaderTemplate({ isSearch }: Props): ReactElement {
+export default function HeaderTemplate({
+  isSearch,
+  text,
+  onChangeText,
+}: Props): ReactElement {
   const { changeThemeType, themeType } = useThemeContext();
   const [themeSwitch, setThemeSwitch] = useState<boolean>(
     themeType !== ThemeType.LIGHT,
@@ -108,7 +114,11 @@ export default function HeaderTemplate({ isSearch }: Props): ReactElement {
         </TitleWrapper>
       </HeaderLeft>
       <HeaderRight>
-        {isSearch ? <SearchBar /> : <PlatformNavigation />}
+        {isSearch ? (
+          <SearchBar text={text} onChange={onChangeText} />
+        ) : (
+          <PlatformNavigation />
+        )}
       </HeaderRight>
     </HeaderLayout>
   );
