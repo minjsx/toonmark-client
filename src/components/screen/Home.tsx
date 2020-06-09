@@ -110,12 +110,16 @@ function Home({ match }: RouteComponentProps<MatchParams>): ReactElement {
           <Label text={getString('MYTOONMARK')} fontType="H5Medium" />
         </TitleWrapper>
         <WeekSelector selectedItem={selectedDay} handleClick={handleDayClick} />
-        {favorWebtoons.length > 0 ? (
+        {favorWebtoons.filter((value) =>
+          selectedDay !== 'ALL'
+            ? value.weekday.toUpperCase().includes(selectedDay)
+            : value,
+        ).length > 0 ? (
           <CardSection>
             {favorWebtoons
               .filter((value) =>
                 selectedDay !== 'ALL'
-                  ? value.weekday.toUpperCase() === selectedDay
+                  ? value.weekday.toUpperCase().includes(selectedDay)
                   : value,
               )
               .map((webtoon, idx, array) => (
