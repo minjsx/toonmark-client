@@ -77,7 +77,7 @@ export const Typhography = {
     font-weight: bold;
     font-stretch: normal;
     font-style: normal;
-    line-height: normal;
+    line-height: 1.6;
     letter-spacing: 0.15px;
     color: ${({ theme }): string => theme.fontColor};
   `,
