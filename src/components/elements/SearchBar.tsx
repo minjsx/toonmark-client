@@ -61,14 +61,14 @@ export default function SearchBar({
   onChange,
   onClick,
 }: Props): ReactElement {
-  const { text: value, onChange: onChangeText } = useInput(); // 임시로 달아놓음 추후 부모로 옮겨야함
   return (
     <Templete>
       <Input
+        autoFocus
         onClick={onClick}
         placeholder={placeholder}
-        value={value}
-        onChange={onChangeText}
+        value={text}
+        onChange={onChange}        
       />
       <IconWrapper>
         <Icon icon="Search" size={16} />
