@@ -35,9 +35,11 @@ const IconWrapper = styled.li`
 function PlatformNavigation({}: Props): ReactElement {
   return (
     <Wrapper>
-      <IconWrapper>
-        <Icon icon="Search" color="white" size={16} />
-      </IconWrapper>
+      <Link to={'/search'}>
+        <IconWrapper>
+          <Icon icon="Search" color="white" size={16} />
+        </IconWrapper>
+      </Link>
       {PlatformIconTypes.map((platform, index) => (
         <List key={index}>
           <Link to={`/platform/${platform.toLowerCase()}`}>
