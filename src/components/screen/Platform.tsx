@@ -116,15 +116,15 @@ function Platform({
             .map((e) => data[e]),
         // .sort((a, b) => (a.title > b.title ? 1 : a.title < b.title ? -1 : 0)),
       );
+      setLoading(false);
     } catch (error) {
       if (Axios.isCancel(error)) {
-        console.log('caught cancel :: ', loading);
+        // console.log('caught cancel :: ', loading);
       } else {
         setError(error);
         throw error;
+        setLoading(false);
       }
-    } finally {
-      setLoading(false);
     }
   }
 
