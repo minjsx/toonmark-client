@@ -5,6 +5,7 @@ import { colors } from '../../theme';
 import { Typhography } from '../../Typhography';
 import { WebtoonPlatform } from '../../types';
 
+import Image from '../atoms/Image';
 import Icon from '../../Icon/Icon';
 import PlatformIcon from '../../Icon/PlatformIcon';
 import DefaultImage from '../../assets/card_placeholder.png';
@@ -99,7 +100,7 @@ function Card(props: Props): ReactElement {
   } = props;
   return (
     <CardContainer>
-      <CardImage
+      <Image
         referrerPolicy="no-referrer"
         onClick={onCardClick}
         src={thumbnail || DefaultImage}
