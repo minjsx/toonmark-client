@@ -5,7 +5,7 @@ import { WebtoonPlatform } from '../types';
 // 스토리에서 불러오기 위함
 const icons = {
   naver:
-    'https://pbs.twimg.com/profile_images/1162296345173975042/DHZimJgv_400x400.jpg',
+    'https://play-lh.googleusercontent.com/yEh_3Tn28fJWRW6q9GkiUjl6YKNHAllQLEeQ63gS4rF5hpobUbic0jq4bS6BfP80g1E',
   daum: 'https://u1.daumcdn.net/webtoon/op/webtoon_home_text_ver_20190514.png',
   kakao:
     'https://dn-img-page.kakao.com/download/resource?kid=b6iau6/hydtsoiYqF/0gzoOvKflPuGyFDWXNDZJ1',
