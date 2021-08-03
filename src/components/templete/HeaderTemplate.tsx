@@ -1,16 +1,15 @@
 import React, { ReactElement, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import { colors, device } from '../../theme';
-import HeaderLayout from '../layouts/HeaderLayout';
-
-import Label from '../atoms/Label';
-import SearchBar from '../elements/SearchBar';
-import Switch from 'react-switch';
+import Switch from 'react-switch'; // light them 및 dark theme 변경 switch
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { useThemeContext } from '../../providers/ThemeProvider';
 import { ThemeType } from '../../types';
+import { colors, device } from '../../theme';
+
+import HeaderLayout from '../layouts/HeaderLayout';
 import PlatformNavigation from '../elements/PlatformNavigation';
+import SearchBar from '../elements/SearchBar';
+import Label from '../atoms/Label';
 
 interface Props {
   isSearch?: boolean;
@@ -28,8 +27,6 @@ const ThemeToggleWrapper = styled.div`
   top: 0;
   bottom: 0;
 `;
-
-const Container = styled.div``;
 
 const TitleWrapper = styled.div`
   cursor: pointer;
